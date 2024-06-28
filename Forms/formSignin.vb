@@ -1,8 +1,12 @@
 ﻿Public Class formSignin
+    Dim userName As String
+    Dim userEmail As String
+    Dim userPassword As String
+
     Private Function isEmpty()
-        Dim userName As String = txtUsername.Text
-        Dim userEmail As String = txtEmail.Text
-        Dim userPassword As String = txtPassword.Text
+        userName = txtUsername.Text
+        userEmail = txtEmail.Text
+        userPassword = txtPassword.Text
 
         If String.IsNullOrEmpty(userName) OrElse String.IsNullOrEmpty(userEmail) OrElse String.IsNullOrEmpty(userPassword) Then
             If String.IsNullOrEmpty(txtUsername.Text) Then
@@ -23,6 +27,11 @@
             MsgBox("Please fill in all fields (Username, Email, Password).", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
         Else
             MsgBox("Sign In Successful!", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Sign In")
+
+            UserInfo.userName = userName
+            UserInfo.userEmail = userEmail
+            UserInfo.userPassword = userPassword
+
             Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
             parentForm.ReplaceChildForm(New formHome)
         End If

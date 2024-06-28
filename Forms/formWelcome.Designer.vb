@@ -22,22 +22,10 @@ Partial Class formWelcome
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        lblUsername = New Label()
         Label2 = New Label()
         Label1 = New Label()
+        lblUsername = New Label()
         SuspendLayout()
-        ' 
-        ' lblUsername
-        ' 
-        lblUsername.Anchor = AnchorStyles.None
-        lblUsername.AutoSize = True
-        lblUsername.Font = New Font("Inter ExtraBold", 72F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblUsername.ForeColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
-        lblUsername.Location = New Point(160, 211)
-        lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(286, 116)
-        lblUsername.TabIndex = 9
-        lblUsername.Text = "John"
         ' 
         ' Label2
         ' 
@@ -60,6 +48,18 @@ Partial Class formWelcome
         Label1.TabIndex = 7
         Label1.Text = "HOME"
         ' 
+        ' lblUsername
+        ' 
+        lblUsername.Anchor = AnchorStyles.None
+        lblUsername.Font = New Font("Inter ExtraBold", 72F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblUsername.ForeColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
+        lblUsername.Location = New Point(-40, 211)
+        lblUsername.Name = "lblUsername"
+        lblUsername.Size = New Size(677, 116)
+        lblUsername.TabIndex = 9
+        lblUsername.Text = "John"
+        lblUsername.TextAlign = ContentAlignment.MiddleCenter
+        ' 
         ' formWelcome
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -74,8 +74,7 @@ Partial Class formWelcome
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents lblUsername As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents lblUsername As Label
 End Class
