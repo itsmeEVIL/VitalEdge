@@ -6,3 +6,4 @@
 ![3](./Resources/Images/Screenshots/3.jpg)
 ![4](./Resources/Images/Screenshots/4.jpg)
 ![5](./Resources/Images/Screenshots/5.jpg)
+![6](./Resources/Images/Screenshots/6.jpg)
