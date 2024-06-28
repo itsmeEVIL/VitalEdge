@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VitalEdge", "VitalEdge.vbproj", "{A434A513-BEBD-44D2-928B-EB34112A004C}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "VitalEdge", "VitalEdge.vbproj", "{A434A513-BEBD-44D2-928B-EB34112A004C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

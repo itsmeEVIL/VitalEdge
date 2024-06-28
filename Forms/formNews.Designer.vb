@@ -43,7 +43,7 @@ Partial Class formNews
         LinkLabel1 = New LinkLabel()
         PictureBox1 = New PictureBox()
         Label2 = New Label()
-        Label3 = New Label()
+        lblHealthPoints = New Label()
         Panel1.SuspendLayout()
         Panel4.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -348,24 +348,24 @@ Partial Class formNews
         Label2.Text = "My HealthPoints:"
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label3
+        ' lblHealthPoints
         ' 
-        Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Label3.BackColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
-        Label3.Font = New Font("Inter", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(455, 48)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(120, 23)
-        Label3.TabIndex = 6
-        Label3.Text = "120"
-        Label3.TextAlign = ContentAlignment.TopCenter
+        lblHealthPoints.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblHealthPoints.BackColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
+        lblHealthPoints.Font = New Font("Inter", 9.75F, FontStyle.Bold)
+        lblHealthPoints.Location = New Point(455, 48)
+        lblHealthPoints.Name = "lblHealthPoints"
+        lblHealthPoints.Size = New Size(120, 23)
+        lblHealthPoints.TabIndex = 6
+        lblHealthPoints.Text = "120"
+        lblHealthPoints.TextAlign = ContentAlignment.TopCenter
         ' 
         ' formNews
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(634, 516)
-        Controls.Add(Label3)
+        Controls.Add(lblHealthPoints)
         Controls.Add(Label2)
         Controls.Add(Panel1)
         Controls.Add(Label1)
@@ -388,7 +388,7 @@ Partial Class formNews
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblHealthPoints As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel5 As Panel
     Friend WithEvents LinkLabel5 As LinkLabel

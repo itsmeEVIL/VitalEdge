@@ -55,9 +55,9 @@ Partial Class formCalculator
         btnCalculate.FlatStyle = FlatStyle.Flat
         btnCalculate.Font = New Font("Inter SemiBold", 10F, FontStyle.Bold)
         btnCalculate.ForeColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
-        btnCalculate.Location = New Point(320, 426)
+        btnCalculate.Location = New Point(330, 436)
         btnCalculate.Name = "btnCalculate"
-        btnCalculate.Size = New Size(163, 34)
+        btnCalculate.Size = New Size(192, 34)
         btnCalculate.TabIndex = 6
         btnCalculate.Text = "Calculate"
         btnCalculate.UseVisualStyleBackColor = True
@@ -68,7 +68,7 @@ Partial Class formCalculator
         Label9.AutoSize = True
         Label9.Font = New Font("Inter Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label9.ForeColor = Color.FromArgb(CByte(89), CByte(89), CByte(89))
-        Label9.Location = New Point(316, 333)
+        Label9.Location = New Point(326, 343)
         Label9.Name = "Label9"
         Label9.Size = New Size(103, 19)
         Label9.TabIndex = 24
@@ -80,7 +80,7 @@ Partial Class formCalculator
         Label7.AutoSize = True
         Label7.Font = New Font("Inter Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label7.ForeColor = Color.FromArgb(CByte(89), CByte(89), CByte(89))
-        Label7.Location = New Point(316, 250)
+        Label7.Location = New Point(326, 260)
         Label7.Name = "Label7"
         Label7.Size = New Size(104, 19)
         Label7.TabIndex = 23
@@ -92,7 +92,7 @@ Partial Class formCalculator
         Label5.AutoSize = True
         Label5.Font = New Font("Inter Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label5.ForeColor = Color.FromArgb(CByte(89), CByte(89), CByte(89))
-        Label5.Location = New Point(316, 168)
+        Label5.Location = New Point(326, 178)
         Label5.Name = "Label5"
         Label5.Size = New Size(44, 19)
         Label5.TabIndex = 22
@@ -104,7 +104,7 @@ Partial Class formCalculator
         Label2.AutoSize = True
         Label2.Font = New Font("Inter Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.FromArgb(CByte(89), CByte(89), CByte(89))
-        Label2.Location = New Point(316, 88)
+        Label2.Location = New Point(326, 98)
         Label2.Name = "Label2"
         Label2.Size = New Size(70, 19)
         Label2.TabIndex = 21
@@ -116,11 +116,11 @@ Partial Class formCalculator
         txtAge.BorderStyle = BorderStyle.None
         txtAge.Cursor = Cursors.IBeam
         txtAge.Font = New Font("Inter SemiBold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        txtAge.Location = New Point(320, 190)
+        txtAge.Location = New Point(330, 200)
         txtAge.Multiline = False
         txtAge.Name = "txtAge"
         txtAge.ScrollBars = RichTextBoxScrollBars.None
-        txtAge.Size = New Size(163, 34)
+        txtAge.Size = New Size(192, 34)
         txtAge.TabIndex = 25
         txtAge.Text = ""
         ' 
@@ -130,11 +130,11 @@ Partial Class formCalculator
         txtHeight.BorderStyle = BorderStyle.None
         txtHeight.Cursor = Cursors.IBeam
         txtHeight.Font = New Font("Inter SemiBold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        txtHeight.Location = New Point(320, 272)
+        txtHeight.Location = New Point(330, 282)
         txtHeight.Multiline = False
         txtHeight.Name = "txtHeight"
         txtHeight.ScrollBars = RichTextBoxScrollBars.None
-        txtHeight.Size = New Size(163, 34)
+        txtHeight.Size = New Size(192, 34)
         txtHeight.TabIndex = 26
         txtHeight.Text = ""
         ' 
@@ -144,11 +144,11 @@ Partial Class formCalculator
         txtWeight.BorderStyle = BorderStyle.None
         txtWeight.Cursor = Cursors.IBeam
         txtWeight.Font = New Font("Inter SemiBold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        txtWeight.Location = New Point(320, 355)
+        txtWeight.Location = New Point(330, 365)
         txtWeight.Multiline = False
         txtWeight.Name = "txtWeight"
         txtWeight.ScrollBars = RichTextBoxScrollBars.None
-        txtWeight.Size = New Size(163, 34)
+        txtWeight.Size = New Size(192, 34)
         txtWeight.TabIndex = 27
         txtWeight.Text = ""
         ' 
@@ -162,9 +162,9 @@ Partial Class formCalculator
         rdbMale.Cursor = Cursors.Hand
         rdbMale.FlatStyle = FlatStyle.Flat
         rdbMale.Font = New Font("Inter SemiBold", 10F, FontStyle.Bold)
-        rdbMale.Location = New Point(320, 110)
+        rdbMale.Location = New Point(330, 120)
         rdbMale.Name = "rdbMale"
-        rdbMale.Size = New Size(76, 34)
+        rdbMale.Size = New Size(88, 34)
         rdbMale.TabIndex = 28
         rdbMale.TabStop = True
         rdbMale.Text = "Male"
@@ -180,9 +180,9 @@ Partial Class formCalculator
         rdbFemale.Cursor = Cursors.Hand
         rdbFemale.FlatStyle = FlatStyle.Flat
         rdbFemale.Font = New Font("Inter SemiBold", 10F, FontStyle.Bold)
-        rdbFemale.Location = New Point(407, 110)
+        rdbFemale.Location = New Point(435, 120)
         rdbFemale.Name = "rdbFemale"
-        rdbFemale.Size = New Size(76, 34)
+        rdbFemale.Size = New Size(87, 34)
         rdbFemale.TabIndex = 29
         rdbFemale.TabStop = True
         rdbFemale.Text = "Female"
@@ -193,9 +193,9 @@ Partial Class formCalculator
         ' 
         PictureBox1.Anchor = AnchorStyles.None
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(106, 88)
+        PictureBox1.Location = New Point(90, 75)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(181, 372)
+        PictureBox1.Size = New Size(207, 414)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 30
         PictureBox1.TabStop = False

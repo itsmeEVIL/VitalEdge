@@ -114,6 +114,7 @@ Public Class formNews
     End Sub
 
     Private Sub formNews_Load(sender As Object, e As EventArgs) Handles Me.Load
+        lblHealthPoints.Text = UserInfo.userHealthPoints
         HoverLink(LinkLabel1)
         HoverLink(LinkLabel10, False)
     End Sub

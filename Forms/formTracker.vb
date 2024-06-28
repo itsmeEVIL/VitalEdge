@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.ComboBox
+﻿Imports System.Diagnostics.CodeAnalysis
+Imports System.Windows.Forms.ComboBox
 
 Public Class formTracker
     Private Const CaloriesPerKmRunning As Double = 100
@@ -6,7 +7,8 @@ Public Class formTracker
 
     Private Sub formTracker_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbActivity.ItemHeight = 28
-        cmbActivity.DropDownHeight = 60
+        cmbActivity.DropDownHeight = 100
+        lblHealthPoints.Text = UserInfo.userHealthPoints
     End Sub
 
     Private Sub cmbActivity_DrawItem(sender As Object, e As DrawItemEventArgs) Handles cmbActivity.DrawItem
@@ -30,7 +32,7 @@ Public Class formTracker
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
         Dim distance As Double
         If Not Double.TryParse(txtDistance.Text, distance) Then
-            MessageBox.Show("Please enter a valid distance in kilometers.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MsgBox("Please enter a valid distance in kilometers.", MessageBoxButtons.OK + MessageBoxIcon.Warning, "Invalid Input")
             Return
         End If
 
@@ -43,5 +45,11 @@ Public Class formTracker
         End Select
 
         txtCalories.Text = caloriesBurned & " cal"
+
+        Dim healthPoints As Integer = distance * 10
+        UserInfo.userHealthPoints += healthPoints
+        lblHealthPoints.Text = UserInfo.userHealthPoints
+
+        MsgBox($"You received {healthPoints} HealthPoints! Use your HealthPoints as discount vouchers when you join a health events.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "HealthPoints")
     End Sub
 End Class

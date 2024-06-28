@@ -30,21 +30,19 @@ Partial Class formMain
         ' 
         pnlMain.Dock = DockStyle.Fill
         pnlMain.Location = New Point(0, 0)
-        pnlMain.Margin = New Padding(3, 4, 3, 4)
         pnlMain.Name = "pnlMain"
-        pnlMain.Size = New Size(959, 688)
+        pnlMain.Size = New Size(904, 581)
         pnlMain.TabIndex = 0
         ' 
         ' formMain
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Window
-        ClientSize = New Size(959, 688)
+        ClientSize = New Size(904, 581)
         Controls.Add(pnlMain)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        Margin = New Padding(3, 4, 3, 4)
-        MinimumSize = New Size(952, 735)
+        MinimumSize = New Size(835, 561)
         Name = "formMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "VitalEdge"

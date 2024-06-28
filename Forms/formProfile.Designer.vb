@@ -31,7 +31,7 @@ Partial Class formProfile
         lblUsername = New Label()
         lblEmail = New Label()
         Label5 = New Label()
-        lblHealthPoint = New Label()
+        lblHealthPoints = New Label()
         Label7 = New Label()
         lblPassword = New Label()
         Label9 = New Label()
@@ -135,17 +135,17 @@ Partial Class formProfile
         Label5.TabIndex = 16
         Label5.Text = "Email:"
         ' 
-        ' lblHealthPoint
+        ' lblHealthPoints
         ' 
-        lblHealthPoint.Anchor = AnchorStyles.None
-        lblHealthPoint.AutoSize = True
-        lblHealthPoint.Font = New Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblHealthPoint.ForeColor = Color.Black
-        lblHealthPoint.Location = New Point(281, 331)
-        lblHealthPoint.Name = "lblHealthPoint"
-        lblHealthPoint.Size = New Size(36, 19)
-        lblHealthPoint.TabIndex = 19
-        lblHealthPoint.Text = "114"
+        lblHealthPoints.Anchor = AnchorStyles.None
+        lblHealthPoints.AutoSize = True
+        lblHealthPoints.Font = New Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblHealthPoints.ForeColor = Color.Black
+        lblHealthPoints.Location = New Point(281, 331)
+        lblHealthPoints.Name = "lblHealthPoints"
+        lblHealthPoints.Size = New Size(36, 19)
+        lblHealthPoints.TabIndex = 19
+        lblHealthPoints.Text = "114"
         ' 
         ' Label7
         ' 
@@ -206,7 +206,7 @@ Partial Class formProfile
         Controls.Add(btnLogOut)
         Controls.Add(lblPassword)
         Controls.Add(Label9)
-        Controls.Add(lblHealthPoint)
+        Controls.Add(lblHealthPoints)
         Controls.Add(Label7)
         Controls.Add(lblEmail)
         Controls.Add(Label5)
@@ -231,7 +231,7 @@ Partial Class formProfile
     Friend WithEvents lblUsername As Label
     Friend WithEvents lblEmail As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents lblHealthPoint As Label
+    Friend WithEvents lblHealthPoints As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents lblPassword As Label
     Friend WithEvents Label9 As Label
