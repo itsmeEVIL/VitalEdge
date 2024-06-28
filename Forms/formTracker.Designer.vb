@@ -72,6 +72,7 @@ Partial Class formTracker
         txtCalories.ScrollBars = RichTextBoxScrollBars.None
         txtCalories.Size = New Size(191, 34)
         txtCalories.TabIndex = 38
+        txtCalories.TabStop = False
         txtCalories.Text = ""
         ' 
         ' txtDistance
@@ -85,7 +86,7 @@ Partial Class formTracker
         txtDistance.Name = "txtDistance"
         txtDistance.ScrollBars = RichTextBoxScrollBars.None
         txtDistance.Size = New Size(191, 34)
-        txtDistance.TabIndex = 37
+        txtDistance.TabIndex = 2
         txtDistance.Text = ""
         ' 
         ' Label9
@@ -134,7 +135,7 @@ Partial Class formTracker
         btnCalculate.Location = New Point(330, 436)
         btnCalculate.Name = "btnCalculate"
         btnCalculate.Size = New Size(191, 34)
-        btnCalculate.TabIndex = 31
+        btnCalculate.TabIndex = 3
         btnCalculate.Text = "Calculate"
         btnCalculate.UseVisualStyleBackColor = True
         ' 
@@ -164,7 +165,7 @@ Partial Class formTracker
         cmbActivity.Location = New Point(330, 121)
         cmbActivity.Name = "cmbActivity"
         cmbActivity.Size = New Size(191, 24)
-        cmbActivity.TabIndex = 44
+        cmbActivity.TabIndex = 1
         ' 
         ' lblHealthPoints
         ' 

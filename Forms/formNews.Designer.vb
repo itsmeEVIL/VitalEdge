@@ -122,7 +122,7 @@ Partial Class formNews
         LinkLabel6.Name = "LinkLabel6"
         LinkLabel6.Padding = New Padding(10, 0, 0, 0)
         LinkLabel6.Size = New Size(280, 39)
-        LinkLabel6.TabIndex = 15
+        LinkLabel6.TabIndex = 10
         LinkLabel6.TabStop = True
         LinkLabel6.Text = "722 SARAWAK DAY RUN 2024"
         LinkLabel6.TextAlign = ContentAlignment.MiddleLeft
@@ -140,7 +140,7 @@ Partial Class formNews
         LinkLabel7.Name = "LinkLabel7"
         LinkLabel7.Padding = New Padding(10, 0, 0, 0)
         LinkLabel7.Size = New Size(280, 39)
-        LinkLabel7.TabIndex = 14
+        LinkLabel7.TabIndex = 9
         LinkLabel7.TabStop = True
         LinkLabel7.Text = "KLIPPA ART RUN 2024"
         LinkLabel7.TextAlign = ContentAlignment.MiddleLeft
@@ -158,7 +158,7 @@ Partial Class formNews
         LinkLabel8.Name = "LinkLabel8"
         LinkLabel8.Padding = New Padding(10, 0, 0, 0)
         LinkLabel8.Size = New Size(280, 39)
-        LinkLabel8.TabIndex = 13
+        LinkLabel8.TabIndex = 8
         LinkLabel8.TabStop = True
         LinkLabel8.Text = "WATSONS GET ACTIVE CARNIVAL 2024"
         LinkLabel8.TextAlign = ContentAlignment.MiddleLeft
@@ -176,7 +176,7 @@ Partial Class formNews
         LinkLabel9.Name = "LinkLabel9"
         LinkLabel9.Padding = New Padding(10, 0, 0, 0)
         LinkLabel9.Size = New Size(280, 39)
-        LinkLabel9.TabIndex = 12
+        LinkLabel9.TabIndex = 7
         LinkLabel9.TabStop = True
         LinkLabel9.Text = "TIAN SIANG BMW RUN - IPOH"
         LinkLabel9.TextAlign = ContentAlignment.MiddleLeft
@@ -195,7 +195,7 @@ Partial Class formNews
         LinkLabel10.Name = "LinkLabel10"
         LinkLabel10.Padding = New Padding(10, 0, 0, 0)
         LinkLabel10.Size = New Size(280, 39)
-        LinkLabel10.TabIndex = 11
+        LinkLabel10.TabIndex = 6
         LinkLabel10.TabStop = True
         LinkLabel10.Text = "[Virtual Run] Laksamana Run 2024"
         LinkLabel10.TextAlign = ContentAlignment.MiddleLeft
@@ -246,7 +246,7 @@ Partial Class formNews
         LinkLabel5.Name = "LinkLabel5"
         LinkLabel5.Padding = New Padding(10, 0, 0, 0)
         LinkLabel5.Size = New Size(284, 39)
-        LinkLabel5.TabIndex = 10
+        LinkLabel5.TabIndex = 5
         LinkLabel5.TabStop = True
         LinkLabel5.Text = "Taking Regular Walks May Help Reduce Lower Back Pain"
         LinkLabel5.TextAlign = ContentAlignment.MiddleLeft
@@ -264,7 +264,7 @@ Partial Class formNews
         LinkLabel4.Name = "LinkLabel4"
         LinkLabel4.Padding = New Padding(10, 0, 0, 0)
         LinkLabel4.Size = New Size(284, 39)
-        LinkLabel4.TabIndex = 9
+        LinkLabel4.TabIndex = 4
         LinkLabel4.TabStop = True
         LinkLabel4.Text = "These 6 Health Risks Can Significantly Increase on Hot Days"
         LinkLabel4.TextAlign = ContentAlignment.MiddleLeft
@@ -282,7 +282,7 @@ Partial Class formNews
         LinkLabel3.Name = "LinkLabel3"
         LinkLabel3.Padding = New Padding(10, 0, 0, 0)
         LinkLabel3.Size = New Size(284, 39)
-        LinkLabel3.TabIndex = 8
+        LinkLabel3.TabIndex = 3
         LinkLabel3.TabStop = True
         LinkLabel3.Text = "Intermittent Fasting Can Help People With Type 2 Diabetes Control Blood Sugar, Weight Loss"
         LinkLabel3.TextAlign = ContentAlignment.MiddleLeft
@@ -300,7 +300,7 @@ Partial Class formNews
         LinkLabel2.Name = "LinkLabel2"
         LinkLabel2.Padding = New Padding(10, 0, 0, 0)
         LinkLabel2.Size = New Size(284, 39)
-        LinkLabel2.TabIndex = 7
+        LinkLabel2.TabIndex = 2
         LinkLabel2.TabStop = True
         LinkLabel2.Text = "Exercise Can Help Prevent Bone Loss in People Taking GLP-1 Weight Loss Drugs"
         LinkLabel2.TextAlign = ContentAlignment.MiddleLeft
@@ -319,7 +319,7 @@ Partial Class formNews
         LinkLabel1.Name = "LinkLabel1"
         LinkLabel1.Padding = New Padding(10, 0, 0, 0)
         LinkLabel1.Size = New Size(284, 39)
-        LinkLabel1.TabIndex = 6
+        LinkLabel1.TabIndex = 1
         LinkLabel1.TabStop = True
         LinkLabel1.Text = "Taking a Daily Multivitamin May Not Help You Live Longer"
         LinkLabel1.TextAlign = ContentAlignment.MiddleLeft

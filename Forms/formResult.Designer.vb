@@ -46,7 +46,7 @@ Partial Class formResult
         btnBack.Location = New Point(443, 454)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(135, 34)
-        btnBack.TabIndex = 35
+        btnBack.TabIndex = 1
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = True
         ' 

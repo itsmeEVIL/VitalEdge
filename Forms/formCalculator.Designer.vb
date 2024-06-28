@@ -121,7 +121,7 @@ Partial Class formCalculator
         txtAge.Name = "txtAge"
         txtAge.ScrollBars = RichTextBoxScrollBars.None
         txtAge.Size = New Size(192, 34)
-        txtAge.TabIndex = 25
+        txtAge.TabIndex = 3
         txtAge.Text = ""
         ' 
         ' txtHeight
@@ -135,7 +135,7 @@ Partial Class formCalculator
         txtHeight.Name = "txtHeight"
         txtHeight.ScrollBars = RichTextBoxScrollBars.None
         txtHeight.Size = New Size(192, 34)
-        txtHeight.TabIndex = 26
+        txtHeight.TabIndex = 4
         txtHeight.Text = ""
         ' 
         ' txtWeight
@@ -149,7 +149,7 @@ Partial Class formCalculator
         txtWeight.Name = "txtWeight"
         txtWeight.ScrollBars = RichTextBoxScrollBars.None
         txtWeight.Size = New Size(192, 34)
-        txtWeight.TabIndex = 27
+        txtWeight.TabIndex = 5
         txtWeight.Text = ""
         ' 
         ' rdbMale
@@ -165,7 +165,7 @@ Partial Class formCalculator
         rdbMale.Location = New Point(330, 120)
         rdbMale.Name = "rdbMale"
         rdbMale.Size = New Size(88, 34)
-        rdbMale.TabIndex = 28
+        rdbMale.TabIndex = 1
         rdbMale.TabStop = True
         rdbMale.Text = "Male"
         rdbMale.TextAlign = ContentAlignment.MiddleCenter
@@ -183,7 +183,7 @@ Partial Class formCalculator
         rdbFemale.Location = New Point(435, 120)
         rdbFemale.Name = "rdbFemale"
         rdbFemale.Size = New Size(87, 34)
-        rdbFemale.TabIndex = 29
+        rdbFemale.TabIndex = 2
         rdbFemale.TabStop = True
         rdbFemale.Text = "Female"
         rdbFemale.TextAlign = ContentAlignment.MiddleCenter

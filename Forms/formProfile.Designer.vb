@@ -69,7 +69,7 @@ Partial Class formProfile
         btnChange.Location = New Point(281, 125)
         btnChange.Name = "btnChange"
         btnChange.Size = New Size(135, 34)
-        btnChange.TabIndex = 5
+        btnChange.TabIndex = 1
         btnChange.Text = "Change Picture"
         btnChange.UseVisualStyleBackColor = True
         ' 
@@ -95,7 +95,7 @@ Partial Class formProfile
         btnDelete.Location = New Point(281, 179)
         btnDelete.Name = "btnDelete"
         btnDelete.Size = New Size(135, 34)
-        btnDelete.TabIndex = 14
+        btnDelete.TabIndex = 2
         btnDelete.Text = "Delete Picture"
         btnDelete.UseVisualStyleBackColor = True
         ' 
@@ -193,7 +193,7 @@ Partial Class formProfile
         btnLogOut.Location = New Point(443, 454)
         btnLogOut.Name = "btnLogOut"
         btnLogOut.Size = New Size(135, 34)
-        btnLogOut.TabIndex = 22
+        btnLogOut.TabIndex = 3
         btnLogOut.Text = "Log Out"
         btnLogOut.UseVisualStyleBackColor = True
         ' 
