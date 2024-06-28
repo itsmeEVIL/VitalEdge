@@ -7,3 +7,6 @@
 ![4](./Resources/Images/Screenshots/4.jpg)
 ![5](./Resources/Images/Screenshots/5.jpg)
 ![6](./Resources/Images/Screenshots/6.jpg)
+![7](./Resources/Images/Screenshots/7.jpg)
+![8](./Resources/Images/Screenshots/8.jpg)
+![9](./Resources/Images/Screenshots/9.jpg)
