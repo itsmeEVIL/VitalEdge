@@ -26,12 +26,17 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
+        
+    - name: Install Latest Windows SDK
+      run: |
+        choco install windows-sdk -y
+        refreshenv
+        
     - name: Build solution
       run: dotnet build ${{ env.Solution_Name }} --configuration Release
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test
 
     - name: Decode and save the Base64 encoded PFX certificate
       env:
