@@ -13,9 +13,6 @@ jobs:
   build:
     runs-on: windows-latest
 
-    env:
-      Solution_Name: VitalEdge.sln                              
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -26,40 +23,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-        
-    - name: Install Windows SDK
-      run: |
-        choco install windows-sdk-10.1 -y
-        Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
         
     - name: Build solution
-      run: dotnet build ${{ env.Solution_Name }} --configuration Release
+      run: dotnet build --configuration Release
 
     - name: Run tests
-      run: dotnet test
+      run: dotnet test --no-build --verbosity normal
 
-    - name: Decode and save the Base64 encoded PFX certificate
-      env:
-        Base64_Encoded_Pfx: ${{ secrets.Base64_Encoded_Pfx }}
-      run: |
-        echo $env:Base64_Encoded_Pfx | Out-File encoded.pfx -Encoding ascii
-        [System.IO.File]::WriteAllBytes('signingcert.pfx', [Convert]::FromBase64String((Get-Content encoded.pfx)))
-
-    - name: Sign the application
-      env:
-        Pfx_Key: ${{ secrets.Pfx_Key }}
-      run: |
-        $CertPassword = ConvertTo-SecureString -String $env:Pfx_Key -Force -AsPlainText
-        $Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-        $Cert.Import('signingcert.pfx', $CertPassword, 'Exportable,PersistKeySet')
-        Set-AuthenticodeSignature -FilePath D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe -Certificate $Cert -TimestampServer http://timestamp.digicert.com
-    
     - name: Publish Build Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe
+        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\
