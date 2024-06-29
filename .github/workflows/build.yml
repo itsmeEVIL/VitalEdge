@@ -25,7 +25,10 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Build solution
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release --output ./publish
+
+    - name: Publish
+      run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --output ./publish
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
@@ -34,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\
+        path: ./publish
