@@ -8,7 +8,7 @@ Public Class formTracker
     Private Sub formTracker_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbActivity.ItemHeight = 28
         cmbActivity.DropDownHeight = 100
-        lblHealthPoints.Text = UserInfo.userHealthPoints
+        lblHealthPoints.Text = UserData.userHealthPoints
     End Sub
 
     Private Sub cmbActivity_DrawItem(sender As Object, e As DrawItemEventArgs) Handles cmbActivity.DrawItem
@@ -47,8 +47,8 @@ Public Class formTracker
         txtCalories.Text = caloriesBurned & " cal"
 
         Dim healthPoints As Integer = distance * 10
-        UserInfo.userHealthPoints += healthPoints
-        lblHealthPoints.Text = UserInfo.userHealthPoints
+        UserData.userHealthPoints += healthPoints
+        lblHealthPoints.Text = UserData.userHealthPoints
 
         MsgBox($"You received {healthPoints} HealthPoints! Use your HealthPoints as discount vouchers when you join a health events.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "HealthPoints")
     End Sub

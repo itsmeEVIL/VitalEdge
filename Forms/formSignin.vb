@@ -1,4 +1,6 @@
-﻿Public Class formSignin
+﻿Imports RestSharp
+
+Public Class formSignin
     Dim userName As String
     Dim userEmail As String
     Dim userPassword As String
@@ -9,9 +11,9 @@
         userPassword = txtPassword.Text
 
         If String.IsNullOrEmpty(userName) OrElse String.IsNullOrEmpty(userEmail) OrElse String.IsNullOrEmpty(userPassword) Then
-            If String.IsNullOrEmpty(txtUsername.Text) Then
+            If String.IsNullOrEmpty(userName) Then
                 txtUsername.Focus()
-            ElseIf String.IsNullOrEmpty(txtEmail.Text) Then
+            ElseIf String.IsNullOrEmpty(userEmail) Then
                 txtEmail.Focus()
             Else
                 txtPassword.Focus()
@@ -22,15 +24,37 @@
         Return False
     End Function
 
+    Private Sub SignUp(email As String, username As String, password As String)
+        Dim client As New RestClient("https://zwrsxclozisvztcbkvrz.supabase.co/rest/v1")
+        Dim request As New RestRequest("users", Method.Post)
+        request.AddHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnN4Y2xvemlzdnp0Y2JrdnJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk1NTk1ODYsImV4cCI6MjAzNTEzNTU4Nn0.oP1ZII9CQOxoGxnDlcLYCH68R3E7Yr242BhK_Y4zK4s")
+        request.AddHeader("Content-Type", "application/json")
+
+        Dim userData As New Dictionary(Of String, Object) From {
+            {"email", email},
+            {"username", username},
+            {"password", password}
+        }
+
+        request.AddJsonBody(userData)
+
+        Dim response As RestResponse = client.Execute(request)
+        If response.IsSuccessful Then
+            MsgBox("Registration successful!")
+        Else
+            MsgBox("Registration failed: " & response.Content)
+        End If
+    End Sub
+
     Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
         If isEmpty() Then
-            MsgBox("Please fill in all fields (Username, Email, Password).", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
+            MsgBox("Please fill in all the fields.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
         Else
-            MsgBox("Sign In Successful!", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Sign In")
+            SignUp(userEmail, userName, userPassword)
 
-            UserInfo.userName = userName
-            UserInfo.userEmail = userEmail
-            UserInfo.userPassword = userPassword
+            UserData.userName = userName
+            UserData.userEmail = userEmail
+            UserData.userPassword = userPassword
 
             Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
             parentForm.ReplaceChildForm(New formHome)

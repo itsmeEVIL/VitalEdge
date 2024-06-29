@@ -1,4 +1,4 @@
-﻿Module UserInfo
+﻿Module UserData
     Public userName As String
     Public userEmail As String
     Public userPassword As String
