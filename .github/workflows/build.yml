@@ -29,7 +29,7 @@ jobs:
         
     - name: Install Latest Windows SDK
       run: |
-        choco install windows-sdk -y
+        choco install windows-sdk-10.1 -y
         refreshenv
         
     - name: Build solution
