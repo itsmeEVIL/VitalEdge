@@ -53,8 +53,11 @@ jobs:
       env:
         Pfx_Key: ${{ secrets.Pfx_Key }}
       run: |
-        signtool sign /f signingcert.pfx /p $env:Pfx_Key /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe
-
+        $CertPassword = ConvertTo-SecureString -String $env:Pfx_Key -Force -AsPlainText
+        $Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+        $Cert.Import('signingcert.pfx', $CertPassword, 'Exportable,PersistKeySet')
+        Set-AuthenticodeSignature -FilePath D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe -Certificate $Cert -TimestampServer http://timestamp.digicert.com
+    
     - name: Publish Build Artifacts
       uses: actions/upload-artifact@v3
       with:
