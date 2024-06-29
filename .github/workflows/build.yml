@@ -30,3 +30,9 @@ jobs:
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
+
+    - name: Publish Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: VitalEdge/bin/Release/net8.0-windows
