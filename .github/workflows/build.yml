@@ -13,26 +13,41 @@ jobs:
   build:
     runs-on: windows-latest
 
+    env:
+      Solution_Name: VitalEdge.sln                              
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up .NET
-      uses: actions/setup-dotnet@v2
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
-        dotnet-version: '8.0.x' # Adjust this to your .NET version
+        fetch-depth: 0
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
 
-    - name: Build
-      run: dotnet build --configuration Release
+    - name: Build solution
+      run: dotnet build ${{ env.Solution_Name }} --configuration Release
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
 
+    - name: Decode and save the Base64 encoded PFX certificate
+      env:
+        Base64_Encoded_Pfx: ${{ secrets.Base64_Encoded_Pfx }}
+      run: |
+        echo $env:Base64_Encoded_Pfx | Out-File encoded.pfx -Encoding ascii
+        [System.IO.File]::WriteAllBytes('signingcert.pfx', [Convert]::FromBase64String((Get-Content encoded.pfx)))
+
+    - name: Sign the application
+      env:
+        Pfx_Key: ${{ secrets.Pfx_Key }}
+      run: |
+        signtool sign /f signingcert.pfx /p $env:Pfx_Key /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe
+
     - name: Publish Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: VitalEdge/bin/Release/net8.0-windows
+        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe
