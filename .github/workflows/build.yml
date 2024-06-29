@@ -26,11 +26,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         
-    - name: Install Latest Windows SDK
+    - name: Install Windows SDK
       run: |
         choco install windows-sdk-10.1 -y
-        refreshenv
+        Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
         
     - name: Build solution
       run: dotnet build ${{ env.Solution_Name }} --configuration Release
