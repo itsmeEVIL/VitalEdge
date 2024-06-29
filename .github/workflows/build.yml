@@ -34,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\
+        path: D:\a\VitalEdge\VitalEdge\bin\Release\net8.0-windows\VitalEdge.exe
