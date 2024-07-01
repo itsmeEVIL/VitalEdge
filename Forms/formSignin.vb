@@ -1,9 +1,10 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 
 Public Class formSignin
     Dim username As String
     Dim email As String
-    Dim password As String
+    Dim password As String = ""
 
     Private Function ValidateFields(ByVal username As String, ByVal email As String, ByVal password As String) As Boolean
         If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(password) Then
@@ -33,6 +34,8 @@ Public Class formSignin
 
             User.Name = username
             User.Email = email
+            User.HealthPoints = 0
+            User.ProfilePicture = File.ReadAllBytes("Resources/Images/Default_Profile.png")
 
             MsgBox("Sign up successful!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Sign Up")
             Return True
@@ -62,7 +65,7 @@ Public Class formSignin
     Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
         username = txtUsername.Text.Trim
         email = txtEmail.Text.Trim
-        password = txtPassword.Text.Trim
+        password = password.Trim
 
         If Not ValidateFields(username, email, password) Then
             Exit Sub
@@ -71,11 +74,36 @@ Public Class formSignin
         If SignUp(username, email, password) Then
             Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
             parentForm.ReplaceChildForm(New formHome)
+        Else
+            password = ""
+            txtPassword.Clear()
+            txtEmail.Clear()
+            txtUsername.Clear()
         End If
     End Sub
 
     Private Sub lblLogin_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblLogin.LinkClicked
         Dim parentForm As formLanding = TryCast(Me.ParentForm, formLanding)
         parentForm.ReplaceChildForm(New formLogin)
+    End Sub
+
+    Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
+        If e.KeyChar = Chr(8) Then
+            If password.Length > 0 Then
+                password = password.Substring(0, password.Length - 1)
+            End If
+
+            If txtPassword.TextLength > 0 Then
+                txtPassword.Select(txtPassword.TextLength - 1, 1)
+                txtPassword.SelectedText = ""
+            End If
+
+            e.Handled = True
+        ElseIf e.KeyChar <> Chr(0) Then
+            password &= e.KeyChar
+
+            txtPassword.AppendText("*")
+            e.Handled = True
+        End If
     End Sub
 End Class

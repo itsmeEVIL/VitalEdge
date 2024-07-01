@@ -73,6 +73,7 @@ Public Class formProfile
         picProfile.Image.Dispose()
         picProfile.Image = Image.FromFile("Resources/Images/Default_Profile.png")
         User.ProfilePicture = File.ReadAllBytes("Resources/Images/Default_Profile.png")
+        MsgBox("Profile picture deleted!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Profile Picture")
     End Sub
 
     Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
