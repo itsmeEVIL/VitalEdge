@@ -45,10 +45,9 @@ Partial Class formHome
         ' 
         pnlDesktop.BackColor = SystemColors.Control
         pnlDesktop.Dock = DockStyle.Fill
-        pnlDesktop.Location = New Point(246, 0)
-        pnlDesktop.Margin = New Padding(3, 4, 3, 4)
+        pnlDesktop.Location = New Point(215, 0)
         pnlDesktop.Name = "pnlDesktop"
-        pnlDesktop.Size = New Size(743, 740)
+        pnlDesktop.Size = New Size(650, 555)
         pnlDesktop.TabIndex = 4
         ' 
         ' pnlNavigation
@@ -63,27 +62,28 @@ Partial Class formHome
         pnlNavigation.Controls.Add(Panel2)
         pnlNavigation.Dock = DockStyle.Left
         pnlNavigation.Location = New Point(0, 0)
-        pnlNavigation.Margin = New Padding(3, 4, 3, 4)
         pnlNavigation.Name = "pnlNavigation"
-        pnlNavigation.Size = New Size(246, 740)
+        pnlNavigation.Size = New Size(215, 555)
         pnlNavigation.TabIndex = 3
         ' 
         ' Panel1
         ' 
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(0, 453)
+        Panel1.Location = New Point(0, 340)
+        Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(246, 207)
+        Panel1.Size = New Size(215, 155)
         Panel1.TabIndex = 6
         ' 
         ' PictureBox1
         ' 
         PictureBox1.Anchor = AnchorStyles.Bottom
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(0, 44)
+        PictureBox1.Location = New Point(0, 21)
+        PictureBox1.Margin = New Padding(3, 2, 3, 2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(246, 163)
+        PictureBox1.Size = New Size(215, 134)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
@@ -100,11 +100,10 @@ Partial Class formHome
         btnProfile.IconFont = FontAwesome.Sharp.IconFont.Auto
         btnProfile.IconSize = 32
         btnProfile.ImageAlign = ContentAlignment.MiddleLeft
-        btnProfile.Location = New Point(0, 660)
-        btnProfile.Margin = New Padding(3, 4, 3, 4)
+        btnProfile.Location = New Point(0, 495)
         btnProfile.Name = "btnProfile"
-        btnProfile.Padding = New Padding(17, 0, 17, 0)
-        btnProfile.Size = New Size(246, 80)
+        btnProfile.Padding = New Padding(15, 0, 15, 0)
+        btnProfile.Size = New Size(215, 60)
         btnProfile.TabIndex = 5
         btnProfile.Text = "Profile"
         btnProfile.TextAlign = ContentAlignment.MiddleLeft
@@ -123,11 +122,10 @@ Partial Class formHome
         btnArticles.IconFont = FontAwesome.Sharp.IconFont.Auto
         btnArticles.IconSize = 32
         btnArticles.ImageAlign = ContentAlignment.MiddleLeft
-        btnArticles.Location = New Point(0, 373)
-        btnArticles.Margin = New Padding(3, 4, 3, 4)
+        btnArticles.Location = New Point(0, 280)
         btnArticles.Name = "btnArticles"
-        btnArticles.Padding = New Padding(17, 0, 17, 0)
-        btnArticles.Size = New Size(246, 80)
+        btnArticles.Padding = New Padding(15, 0, 15, 0)
+        btnArticles.Size = New Size(215, 60)
         btnArticles.TabIndex = 4
         btnArticles.Text = "News && Events"
         btnArticles.TextAlign = ContentAlignment.MiddleLeft
@@ -146,11 +144,10 @@ Partial Class formHome
         btnTracker.IconFont = FontAwesome.Sharp.IconFont.Auto
         btnTracker.IconSize = 32
         btnTracker.ImageAlign = ContentAlignment.MiddleLeft
-        btnTracker.Location = New Point(0, 293)
-        btnTracker.Margin = New Padding(3, 4, 3, 4)
+        btnTracker.Location = New Point(0, 220)
         btnTracker.Name = "btnTracker"
-        btnTracker.Padding = New Padding(17, 0, 17, 0)
-        btnTracker.Size = New Size(246, 80)
+        btnTracker.Padding = New Padding(15, 0, 15, 0)
+        btnTracker.Size = New Size(215, 60)
         btnTracker.TabIndex = 3
         btnTracker.Text = "Tracker"
         btnTracker.TextAlign = ContentAlignment.MiddleLeft
@@ -169,11 +166,10 @@ Partial Class formHome
         btnBMI.IconFont = FontAwesome.Sharp.IconFont.Auto
         btnBMI.IconSize = 32
         btnBMI.ImageAlign = ContentAlignment.MiddleLeft
-        btnBMI.Location = New Point(0, 213)
-        btnBMI.Margin = New Padding(3, 4, 3, 4)
+        btnBMI.Location = New Point(0, 160)
         btnBMI.Name = "btnBMI"
-        btnBMI.Padding = New Padding(17, 0, 17, 0)
-        btnBMI.Size = New Size(246, 80)
+        btnBMI.Padding = New Padding(15, 0, 15, 0)
+        btnBMI.Size = New Size(215, 60)
         btnBMI.TabIndex = 2
         btnBMI.Text = "BMI Calculator"
         btnBMI.TextAlign = ContentAlignment.MiddleLeft
@@ -192,11 +188,10 @@ Partial Class formHome
         btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto
         btnHome.IconSize = 32
         btnHome.ImageAlign = ContentAlignment.MiddleLeft
-        btnHome.Location = New Point(0, 133)
-        btnHome.Margin = New Padding(3, 4, 3, 4)
+        btnHome.Location = New Point(0, 100)
         btnHome.Name = "btnHome"
-        btnHome.Padding = New Padding(17, 0, 17, 0)
-        btnHome.Size = New Size(246, 80)
+        btnHome.Padding = New Padding(15, 0, 15, 0)
+        btnHome.Size = New Size(215, 60)
         btnHome.TabIndex = 1
         btnHome.Text = "Home"
         btnHome.TextAlign = ContentAlignment.MiddleLeft
@@ -208,32 +203,29 @@ Partial Class formHome
         Panel2.Controls.Add(picLogo)
         Panel2.Dock = DockStyle.Top
         Panel2.Location = New Point(0, 0)
-        Panel2.Margin = New Padding(3, 4, 3, 4)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(246, 133)
+        Panel2.Size = New Size(215, 100)
         Panel2.TabIndex = 0
         ' 
         ' picLogo
         ' 
         picLogo.Image = CType(resources.GetObject("picLogo.Image"), Image)
-        picLogo.Location = New Point(27, 13)
-        picLogo.Margin = New Padding(3, 4, 3, 4)
+        picLogo.Location = New Point(24, 10)
         picLogo.Name = "picLogo"
-        picLogo.Size = New Size(174, 104)
+        picLogo.Size = New Size(152, 78)
         picLogo.SizeMode = PictureBoxSizeMode.StretchImage
         picLogo.TabIndex = 0
         picLogo.TabStop = False
         ' 
         ' formHome
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
-        ClientSize = New Size(989, 740)
+        ClientSize = New Size(865, 555)
         Controls.Add(pnlDesktop)
         Controls.Add(pnlNavigation)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
         Name = "formHome"
         StartPosition = FormStartPosition.CenterScreen
         Text = "formHome"

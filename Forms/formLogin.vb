@@ -1,77 +1,105 @@
-﻿Imports RestSharp
-Imports Newtonsoft.Json.Linq
+﻿Imports MySql.Data.MySqlClient
 
 Public Class formLogin
-    Dim userEmail As String
-    Dim userPassword As String
+    Dim email As String
+    Dim password As String
 
-    Private Function isEmpty()
-        userEmail = txtEmail.Text
-        userPassword = txtPassword.Text
-
-        If String.IsNullOrEmpty(userEmail) OrElse String.IsNullOrEmpty(userPassword) Then
-            If String.IsNullOrEmpty(userEmail) Then
+    Private Function ValidateFields(ByVal email As String, ByVal password As String)
+        If String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(password) Then
+            MsgBox("Please fill in all the fields!", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
+            If String.IsNullOrEmpty(email) Then
                 txtEmail.Focus()
-            ElseIf String.IsNullOrEmpty(userPassword) Then
+            Else
                 txtPassword.Focus()
             End If
-
-            Return True
+            Return False
         End If
-        Return False
+        Return True
     End Function
 
-    Private Function Login(email As String, password As String)
-        Dim client As New RestClient("https://zwrsxclozisvztcbkvrz.supabase.co/rest/v1")
-        Dim request As New RestRequest("users", Method.Get)
-        request.AddHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnN4Y2xvemlzdnp0Y2JrdnJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk1NTk1ODYsImV4cCI6MjAzNTEzNTU4Nn0.oP1ZII9CQOxoGxnDlcLYCH68R3E7Yr242BhK_Y4zK4s")
-        request.AddParameter("email", "eq." & email)
-        request.AddParameter("password", "eq." & password)
+    Private Function Login(email As String, password As String) As Boolean
+        Dim connectionString As String = "server=localhost;user id=root;password=1234;database=vitaledge"
 
-        Dim response As RestResponse = client.Execute(request)
-
-        If response.IsSuccessful Then
-            Dim user As JArray = JArray.Parse(response.Content)
-
+        Using connection As New MySqlConnection(connectionString)
             Try
-                If user.Any Then
-                    Dim username As String = user(0)("username").ToString()
-                    Dim profilePicture As String = user(0)("profile_picture")
-                    Dim healthPoints As Integer = CInt(user(0)("healthpoints"))
+                connection.Open()
 
-                    UserData.userName = username
-                    UserData.userEmail = email
-                    UserData.userPassword = password
-                    UserData.userProfilePicture = profilePicture
-                    UserData.userHealthPoints = healthPoints
+                Dim storedHashedPassword = GetHashedPassword(email, connection)
+                If Not String.IsNullOrEmpty(storedHashedPassword) Then
+                    If BCrypt.Net.BCrypt.Verify(password, storedHashedPassword) Then
+                        If GetUser(email, connection) Then
+                            MsgBox("Login successful!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Login")
+                            Return True
+                        Else
+                            MsgBox("An error occurred retrieving user information.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                            Return False
+                        End If
+                    Else
+                        MsgBox("Invalid password.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                        Return False
+                    End If
+                Else
+                    MsgBox("Invalid email.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                    Return False
+                End If
 
+                connection.Close()
+            Catch ex As MySqlException
+                MsgBox("An error occurred during login. Please try again later.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                Return False
+            End Try
+        End Using
+    End Function
+
+    Private Function GetHashedPassword(email As String, connection As MySqlConnection) As String
+        Dim passwordQuery As String = "SELECT password FROM users WHERE email = @email"
+
+        Using passwordCmd As New MySqlCommand(passwordQuery, connection)
+            passwordCmd.Parameters.AddWithValue("@email", email)
+
+            Using passwordReader As MySqlDataReader = passwordCmd.ExecuteReader()
+                If passwordReader.HasRows Then
+                    passwordReader.Read()
+                    Return passwordReader.GetString("password")
+                Else
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
+
+    Private Function GetUser(email As String, connection As MySqlConnection) As Boolean
+        Dim userQuery As String = "SELECT username, email, healthpoints, profile_picture FROM users WHERE email = @email"
+
+        Using userCmd As New MySqlCommand(userQuery, connection)
+            userCmd.Parameters.AddWithValue("@email", email)
+
+            Using userReader As MySqlDataReader = userCmd.ExecuteReader()
+                If userReader.HasRows Then
+                    userReader.Read()
+                    User.Name = userReader.GetString("username")
+                    User.Email = userReader.GetString("email")
+                    User.HealthPoints = userReader.GetInt32("healthpoints")
+                    User.ProfilePicture = If(userReader.IsDBNull(userReader.GetOrdinal("profile_picture")), Nothing, CType(userReader(userReader.GetOrdinal("profile_picture")), Byte()))
                     Return True
                 Else
                     Return False
                 End If
-            Catch ex As Exception
-                MsgBox($"Error parsing response: {ex.Message}")
-                Return False
-            End Try
-        Else
-            MsgBox($"Error fetching data: {response.ErrorMessage}")
-            Return False
-        End If
+            End Using
+        End Using
     End Function
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        If isEmpty() Then
-            MsgBox("Please fill in all the fields.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
-        Else
+        email = txtEmail.Text.Trim
+        password = txtPassword.Text.Trim
 
-            If Login(userEmail, userPassword) Then
-                MsgBox($"Login successful! Welcome, {UserData.userName}")
+        If Not ValidateFields(email, password) Then
+            Exit Sub
+        End If
 
-                Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
-                parentForm.ReplaceChildForm(New formHome)
-            Else
-                MsgBox("Login failed. Invalid credentials or user not found.")
-            End If
+        If Login(email, password) Then
+            Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
+            parentForm.ReplaceChildForm(New formHome)
         End If
     End Sub
 

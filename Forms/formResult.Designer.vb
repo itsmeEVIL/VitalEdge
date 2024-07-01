@@ -159,26 +159,26 @@ Partial Class formResult
         ' lblBMIScore
         ' 
         lblBMIScore.Anchor = AnchorStyles.None
-        lblBMIScore.AutoSize = True
         lblBMIScore.Font = New Font("Inter ExtraBold", 72F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblBMIScore.ForeColor = Color.FromArgb(CByte(70), CByte(158), CByte(56))
-        lblBMIScore.Location = New Point(192, 95)
+        lblBMIScore.Location = New Point(126, 85)
         lblBMIScore.Name = "lblBMIScore"
-        lblBMIScore.Size = New Size(255, 116)
+        lblBMIScore.Size = New Size(386, 116)
         lblBMIScore.TabIndex = 36
         lblBMIScore.Text = "22.7"
+        lblBMIScore.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' lblBMIStatus
         ' 
         lblBMIStatus.Anchor = AnchorStyles.None
-        lblBMIStatus.AutoSize = True
         lblBMIStatus.Font = New Font("Inter ExtraBold", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblBMIStatus.ForeColor = Color.FromArgb(CByte(70), CByte(158), CByte(56))
-        lblBMIStatus.Location = New Point(238, 191)
+        lblBMIStatus.Location = New Point(171, 185)
         lblBMIStatus.Name = "lblBMIStatus"
-        lblBMIStatus.Size = New Size(144, 42)
+        lblBMIStatus.Size = New Size(291, 42)
         lblBMIStatus.TabIndex = 37
         lblBMIStatus.Text = "Normal"
+        lblBMIStatus.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' formResult
         ' 

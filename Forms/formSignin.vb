@@ -1,61 +1,74 @@
-﻿Imports RestSharp
+﻿Imports MySql.Data.MySqlClient
 
 Public Class formSignin
-    Dim userName As String
-    Dim userEmail As String
-    Dim userPassword As String
+    Dim username As String
+    Dim email As String
+    Dim password As String
 
-    Private Function isEmpty()
-        userName = txtUsername.Text
-        userEmail = txtEmail.Text
-        userPassword = txtPassword.Text
-
-        If String.IsNullOrEmpty(userName) OrElse String.IsNullOrEmpty(userEmail) OrElse String.IsNullOrEmpty(userPassword) Then
-            If String.IsNullOrEmpty(userName) Then
+    Private Function ValidateFields(ByVal username As String, ByVal email As String, ByVal password As String) As Boolean
+        If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(password) Then
+            MsgBox("Please fill in all the fields!", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
+            If String.IsNullOrEmpty(username) Then
                 txtUsername.Focus()
-            ElseIf String.IsNullOrEmpty(userEmail) Then
+            ElseIf String.IsNullOrEmpty(email) Then
                 txtEmail.Focus()
             Else
                 txtPassword.Focus()
             End If
-
-            Return True
+            Return False
         End If
-        Return False
+        Return True
     End Function
 
-    Private Sub SignUp(email As String, username As String, password As String)
-        Dim client As New RestClient("https://zwrsxclozisvztcbkvrz.supabase.co/rest/v1")
-        Dim request As New RestRequest("users", Method.Post)
-        request.AddHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cnN4Y2xvemlzdnp0Y2JrdnJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk1NTk1ODYsImV4cCI6MjAzNTEzNTU4Nn0.oP1ZII9CQOxoGxnDlcLYCH68R3E7Yr242BhK_Y4zK4s")
-        request.AddHeader("Content-Type", "application/json")
+    Private Function SignUp(ByVal username As String, ByVal email As String, ByVal password As String) As Boolean
+        Dim connectionString As String = "server=localhost;user id=root;password=1234;database=vitaledge"
+        Dim passwordHashed As String = BCrypt.Net.BCrypt.HashPassword(password)
 
-        Dim userData As New Dictionary(Of String, Object) From {
-            {"email", email},
-            {"username", username},
-            {"password", password}
-        }
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
 
-        request.AddJsonBody(userData)
+            If Not InsertUser(username, email, passwordHashed, connection) Then
+                Return False
+            End If
 
-        Dim response As RestResponse = client.Execute(request)
-        If response.IsSuccessful Then
-            MsgBox("Registration successful!")
-        Else
-            MsgBox("Registration failed: " & response.Content)
-        End If
-    End Sub
+            User.Name = username
+            User.Email = email
+
+            MsgBox("Sign up successful!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Sign Up")
+            Return True
+
+            connection.Close()
+        End Using
+    End Function
+
+    Private Function InsertUser(username As String, email As String, passwordHashed As String, connection As MySqlConnection) As Boolean
+        Dim query As String = "INSERT INTO users (username, email, password) VALUES (@username, @email, @password);"
+
+        Using cmd As New MySqlCommand(query, connection)
+            cmd.Parameters.AddWithValue("@username", username)
+            cmd.Parameters.AddWithValue("@email", email)
+            cmd.Parameters.AddWithValue("@password", passwordHashed)
+
+            Try
+                cmd.ExecuteNonQuery()
+                Return True
+            Catch ex As MySqlException
+                MsgBox("An error occurred during sign in. Please try again later.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                Return False
+            End Try
+        End Using
+    End Function
 
     Private Sub btnSignin_Click(sender As Object, e As EventArgs) Handles btnSignin.Click
-        If isEmpty() Then
-            MsgBox("Please fill in all the fields.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
-        Else
-            SignUp(userEmail, userName, userPassword)
+        username = txtUsername.Text.Trim
+        email = txtEmail.Text.Trim
+        password = txtPassword.Text.Trim
 
-            UserData.userName = userName
-            UserData.userEmail = userEmail
-            UserData.userPassword = userPassword
+        If Not ValidateFields(username, email, password) Then
+            Exit Sub
+        End If
 
+        If SignUp(username, email, password) Then
             Dim parentForm As formMain = TryCast(Me.ParentForm.ParentForm, formMain)
             parentForm.ReplaceChildForm(New formHome)
         End If

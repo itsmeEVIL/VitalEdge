@@ -61,10 +61,10 @@ Partial Class formLogin
         lblSignup.LinkColor = Color.FromArgb(CByte(65), CByte(155), CByte(191))
         lblSignup.Location = New Point(106, 441)
         lblSignup.Name = "lblSignup"
-        lblSignup.Size = New Size(206, 21)
+        lblSignup.Size = New Size(199, 21)
         lblSignup.TabIndex = 5
         lblSignup.TabStop = True
-        lblSignup.Text = "Don't have an account? Sign Up"
+        lblSignup.Text = "Don't have an account? Sign in"
         lblSignup.UseCompatibleTextRendering = True
         lblSignup.VisitedLinkColor = Color.Black
         ' 
