@@ -5,8 +5,8 @@ Public Class formForgot
     Dim password As String = ""
     Dim passwordNew As String = ""
 
-    Private Function ValidateFields(ByVal email As String, ByVal password As String, ByVal confirmPassword As String) As Boolean
-        If String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(password) OrElse String.IsNullOrEmpty(confirmPassword) Then
+    Private Function ValidateFields(ByVal email As String, ByVal password As String, ByVal passwordNew As String) As Boolean
+        If String.IsNullOrEmpty(email) OrElse String.IsNullOrEmpty(password) OrElse String.IsNullOrEmpty(passwordNew) Then
             MsgBox("Please fill in all the fields!", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Incomplete Information")
             If String.IsNullOrEmpty(email) Then
                 txtEmail.Focus()
@@ -18,7 +18,7 @@ Public Class formForgot
             Return False
         End If
 
-        If password <> confirmPassword Then
+        If password <> passwordNew Then
             MsgBox("Passwords do not match!", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Password Mismatch")
             txtPassword.Clear()
             txtPasswordConfirm.Clear()
