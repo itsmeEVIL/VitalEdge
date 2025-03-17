@@ -1,6 +1,7 @@
 # VitalEdge
 
-App for OMC May 2024
+App for OMC May 2024.
+
 
 ## Screenshots
 
